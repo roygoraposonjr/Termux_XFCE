@@ -842,7 +842,7 @@ pd login ubuntu --shared-tmp -- env DISPLAY=:0 cp /usr/share/zoneinfo/$timezone 
 
 # Setup Hardware Acceleration in proot
 pd login ubuntu --shared-tmp -- env DISPLAY=:0 wget https://github.com/roygoraposonjr/Termux_XFCE/raw/main/mesa-vulkan-kgsl_24.1.0-devel-20240120_arm64.deb
-pd login ubuntu --shared-tmp -- env DISPLAY=:0 sudo apt install -y ./mesa-vulkan-kgsl_24.1.0-devel-20240120_arm64.deb
+# pd login ubuntu --shared-tmp -- env DISPLAY=:0 sudo apt install -y ./mesa-vulkan-kgsl_24.1.0-devel-20240120_arm64.deb
 
 mkdir -p $PREFIX/var/lib/proot-distro/installed-rootfs/ubuntu/home/$username/.config/
 
