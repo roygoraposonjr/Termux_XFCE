@@ -910,10 +910,11 @@ echo -e "3. Uncheck the hardware acceleration option\n"
 echo -e "${YELLOW}Installation complete! Use 'start' to launch your desktop environment.${NC}\n"
 
 
-source $PREFIX/etc/bash.bashrc
-termux-reload-settings
-rm install_xfce_native.sh
 
 # install qualcom drivers
 wget https://github.com/roygoraposonjr/Termux_XFCE/raw/main/vulkan-wrapper-android_25.0.0-2_aarch64.deb
 dpkg -i vulkan-wrapper-android_25.0.0-2_aarch64.deb
+
+source $PREFIX/etc/bash.bashrc
+termux-reload-settings
+rm install_xfce_native.sh
