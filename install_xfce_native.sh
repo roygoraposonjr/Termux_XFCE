@@ -185,8 +185,10 @@ mkdir -p "$HOME/Desktop" "$HOME/Downloads" "$HOME/.fonts" "$HOME/.config" "$HOME
 #ln -s /storage/emulated/0/Music $HOME/Music
 #ln -s /storage/emulated/0/Pictures $HOME/Pictures
 
+wget https://github.com/roygoraposonjr/Termux_XFCE/raw/main/vulkan-wrapper-android_25.0.0-2_aarch64.deb
+dpkg -i vulkan-wrapper-android_25.0.0-2_aarch64.deb
 # Install XFCE desktop environment
-xfce_packages=('xfce4' 'xfce4-goodies' 'xfce4-pulseaudio-plugin' 'firefox' 'starship' 'termux-x11-nightly' 'virglrenderer-android' 'mesa-vulkan-icd-freedreno' 'fastfetch' 'papirus-icon-theme' 'eza' 'bat')
+xfce_packages=('xfce4' 'xfce4-goodies' 'xfce4-pulseaudio-plugin' 'firefox' 'starship' 'termux-x11-nightly' 'virglrenderer-android' 'fastfetch' 'papirus-icon-theme' 'eza' 'bat')
 if ! pkg install -y "${xfce_packages[@]}" -o Dpkg::Options::="--force-confold"; then
     echo "Failed to install XFCE packages. Exiting."
     exit 1
@@ -752,7 +754,7 @@ chmod +x $PREFIX/bin/prun
 cat <<'EOF' > $PREFIX/bin/zrun
 #!/bin/bash
 varname=$(basename $PREFIX/var/lib/proot-distro/installed-rootfs/ubuntu/home/*)
-pd login ubuntu --user $varname --shared-tmp -- env DISPLAY=:0 MESA_LOADER_DRIVER_OVERRIDE=zink TU_DEBUG=noconform $@
+pd login ubuntu --user $varname --shared-tmp -- env DISPLAY=:0 MESA_LOADER_DRIVER_OVERRIDE=zink VK_ICD_FILENAMES=/usr/share/vulkan/icd.d/freedreno_icd.aarch64.json:/usr/share/vulkan/icd.d/freedreno_icd.armv7l.json TU_DEBUG=noconform vblank_mode=0 $@
 
 EOF
 chmod +x $PREFIX/bin/zrun
@@ -761,7 +763,7 @@ chmod +x $PREFIX/bin/zrun
 cat <<'EOF' > $PREFIX/bin/zrunhud
 #!/bin/bash
 varname=$(basename $PREFIX/var/lib/proot-distro/installed-rootfs/ubuntu/home/*)
-pd login ubuntu --user $varname --shared-tmp -- env DISPLAY=:0 MESA_LOADER_DRIVER_OVERRIDE=zink TU_DEBUG=noconform GALLIUM_HUD=fps $@
+pd login ubuntu --user $varname --shared-tmp -- env DISPLAY=:0 MESA_LOADER_DRIVER_OVERRIDE=zink VK_ICD_FILENAMES=/usr/share/vulkan/icd.d/freedreno_icd.aarch64.json:/usr/share/vulkan/icd.d/freedreno_icd.armv7l.json TU_DEBUG=noconform GALLIUM_HUD=fps vblank_mode=0 $@
 
 EOF
 chmod +x $PREFIX/bin/zrunhud
@@ -841,7 +843,11 @@ pd login ubuntu --shared-tmp -- env DISPLAY=:0 rm /etc/localtime
 pd login ubuntu --shared-tmp -- env DISPLAY=:0 cp /usr/share/zoneinfo/$timezone /etc/localtime
 
 # Setup Hardware Acceleration in proot
-pd login ubuntu --shared-tmp -- env DISPLAY=:0 wget https://github.com/roygoraposonjr/Termux_XFCE/raw/main/mesa-vulkan-kgsl_24.1.0-devel-20240120_arm64.deb
+pd login ubuntu --shared-tmp -- env DISPLAY=:0 sudo apt install software-properties-common
+pd login ubuntu --shared-tmp -- env DISPLAY=:0 ssudo add-apt-repository ppa:mastag/mesa-turnip-kgsl
+pd login ubuntu --shared-tmp -- env DISPLAY=:0 sudo apt update 
+pd login ubuntu --shared-tmp -- env DISPLAY=:0 sudo apt dist-upgrade
+# pd login ubuntu --shared-tmp -- env DISPLAY=:0 wget https://github.com/roygoraposonjr/Termux_XFCE/raw/main/mesa-vulkan-kgsl_24.1.0-devel-20240120_arm64.deb
 # pd login ubuntu --shared-tmp -- env DISPLAY=:0 sudo apt install -y ./mesa-vulkan-kgsl_24.1.0-devel-20240120_arm64.deb
 
 mkdir -p $PREFIX/var/lib/proot-distro/installed-rootfs/ubuntu/home/$username/.config/
