@@ -769,7 +769,7 @@ chmod +x $PREFIX/bin/zrunhud
 
 # App Installer
 
-git clone https://github.com/phoenixbyrd/App-Installer.git $HOME/.config/App-Installer
+git clone https://github.com/roygoraposonjr/App-Installer.git $HOME/.config/App-Installer
 chmod +x $HOME/.config/App-Installer/*
 
 echo "[Desktop Entry]
