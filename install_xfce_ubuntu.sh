@@ -185,8 +185,7 @@ mkdir -p "$HOME/Desktop" "$HOME/Downloads" "$HOME/.fonts" "$HOME/.config" "$HOME
 #ln -s /storage/emulated/0/Music $HOME/Music
 #ln -s /storage/emulated/0/Pictures $HOME/Pictures
 
-wget https://github.com/roygoraposonjr/Termux_XFCE/raw/main/vulkan-wrapper-android_25.0.0-2_aarch64.deb
-dpkg -i vulkan-wrapper-android_25.0.0-2_aarch64.deb
+
 # Install XFCE desktop environment
 xfce_packages=('xfce4' 'xfce4-goodies' 'xfce4-pulseaudio-plugin' 'firefox' 'starship' 'termux-x11-nightly' 'virglrenderer-android' 'fastfetch' 'papirus-icon-theme' 'eza' 'bat')
 if ! pkg install -y "${xfce_packages[@]}" -o Dpkg::Options::="--force-confold"; then
@@ -847,8 +846,10 @@ pd login ubuntu --shared-tmp -- env DISPLAY=:0 cp /usr/share/zoneinfo/$timezone 
 # pd login ubuntu --shared-tmp -- env DISPLAY=:0 ssudo add-apt-repository ppa:mastag/mesa-turnip-kgsl
 # pd login ubuntu --shared-tmp -- env DISPLAY=:0 sudo apt update 
 # pd login ubuntu --shared-tmp -- env DISPLAY=:0 sudo apt dist-upgrade
-pd login ubuntu --shared-tmp -- env DISPLAY=:0 wget https://github.com/roygoraposonjr/Termux_XFCE/raw/main/mesa-vulkan-kgsl_25.1.0-devel-20250321-_arm64.deb
-pd login ubuntu --shared-tmp -- env DISPLAY=:0 sudo apt install -y mesa-vulkan-kgsl_25.1.0-devel-20250321-_arm64.deb
+
+## moved to end
+# pd login ubuntu --shared-tmp -- env DISPLAY=:0 wget https://github.com/roygoraposonjr/Termux_XFCE/raw/main/mesa-vulkan-kgsl_25.1.0-devel-20250321-_arm64.deb
+# pd login ubuntu --shared-tmp -- env DISPLAY=:0 sudo apt install -y mesa-vulkan-kgsl_25.1.0-devel-20250321-_arm64.deb
 
 mkdir -p $PREFIX/var/lib/proot-distro/installed-rootfs/ubuntu/home/$username/.config/
 
@@ -911,6 +912,13 @@ echo -e "3. Uncheck the hardware acceleration option\n"
 
 echo -e "${YELLOW}Installation complete! Use 'start' to launch your desktop environment.${NC}\n"
 
+
+wget https://github.com/roygoraposonjr/Termux_XFCE/raw/main/vulkan-wrapper-android_25.0.0-2_aarch64.deb
+dpkg -i vulkan-wrapper-android_25.0.0-2_aarch64.deb
+
+# Setup Hardware Acceleration in proot
+pd login ubuntu --shared-tmp -- env DISPLAY=:0 wget https://github.com/roygoraposonjr/Termux_XFCE/raw/main/mesa-vulkan-kgsl_25.1.0-devel-20250321-_arm64.deb
+pd login ubuntu --shared-tmp -- env DISPLAY=:0 sudo apt install -y mesa-vulkan-kgsl_25.1.0-devel-20250321-_arm64.deb
 
 source $PREFIX/etc/bash.bashrc
 termux-reload-settings

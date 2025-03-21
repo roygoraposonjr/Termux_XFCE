@@ -841,9 +841,7 @@ timezone=$(getprop persist.sys.timezone)
 pd login debian --shared-tmp -- env DISPLAY=:0 rm /etc/localtime
 pd login debian --shared-tmp -- env DISPLAY=:0 cp /usr/share/zoneinfo/$timezone /etc/localtime
 
-# Setup Hardware Acceleration in proot
-pd login debian --shared-tmp -- env DISPLAY=:0 wget https://github.com/roygoraposonjr/Termux_XFCE/raw/main/mesa-vulkan-kgsl_25.1.0-devel-20250321-_arm64.deb
-pd login debian --shared-tmp -- env DISPLAY=:0 sudo apt install -y mesa-vulkan-kgsl_25.1.0-devel-20250321-_arm64.deb
+
 
 mkdir -p $PREFIX/var/lib/proot-distro/installed-rootfs/debian/home/$username/.config/
 
@@ -914,6 +912,10 @@ echo -e "${YELLOW}Installation complete! Use 'start' to launch your desktop envi
 # install qualcom drivers
 wget https://github.com/roygoraposonjr/Termux_XFCE/raw/main/vulkan-wrapper-android_25.0.0-2_aarch64.deb
 dpkg -i vulkan-wrapper-android_25.0.0-2_aarch64.deb
+
+# Setup Hardware Acceleration in proot
+pd login debian --shared-tmp -- env DISPLAY=:0 wget https://github.com/roygoraposonjr/Termux_XFCE/raw/main/mesa-vulkan-kgsl_25.1.0-devel-20250321-_arm64.deb
+pd login debian --shared-tmp -- env DISPLAY=:0 sudo apt install -y mesa-vulkan-kgsl_25.1.0-devel-20250321-_arm64.deb
 
 source $PREFIX/etc/bash.bashrc
 termux-reload-settings

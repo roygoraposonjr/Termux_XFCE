@@ -11,8 +11,13 @@ This repository provides a script to set up an XFCE desktop environment and a De
 
 To install, execute the following command in Termux:
 
+Debian
 ```bash
 curl -sL https://raw.githubusercontent.com/roygoraposonjr/Termux_XFCE/main/install_xfce_native.sh -o install.sh && bash install.sh
+```
+Ubuntu
+```bash
+curl -sL https://raw.githubusercontent.com/roygoraposonjr/Termux_XFCE/main/install_xfce_ubuntu.sh -o install.sh && bash install.sh
 ```
 
 ## Support and Community
