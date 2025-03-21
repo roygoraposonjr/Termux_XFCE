@@ -185,8 +185,7 @@ mkdir -p "$HOME/Desktop" "$HOME/Downloads" "$HOME/.fonts" "$HOME/.config" "$HOME
 #ln -s /storage/emulated/0/Music $HOME/Music
 #ln -s /storage/emulated/0/Pictures $HOME/Pictures
 
-wget https://github.com/roygoraposonjr/Termux_XFCE/raw/main/vulkan-wrapper-android_25.0.0-2_aarch64.deb
-dpkg -i vulkan-wrapper-android_25.0.0-2_aarch64.deb
+
 # Install XFCE desktop environment
 xfce_packages=('xfce4' 'xfce4-goodies' 'xfce4-pulseaudio-plugin' 'firefox' 'starship' 'termux-x11-nightly' 'virglrenderer-android' 'mesa-vulkan-icd-freedreno-dri3' 'fastfetch' 'papirus-icon-theme' 'eza' 'bat')
 if ! pkg install -y "${xfce_packages[@]}" -o Dpkg::Options::="--force-confold"; then
@@ -872,6 +871,11 @@ cp $PREFIX/var/lib/proot-distro/installed-rootfs/debian/usr/share/applications/o
 sed -i 's|^Exec=.*$|Exec=prun flameshot|' $HOME/.config/autostart/org.flameshot.Flameshot.desktop
 
 chmod +x $HOME/.config/autostart/*.desktop
+
+
+# install qualcom drivers
+wget https://github.com/roygoraposonjr/Termux_XFCE/raw/main/vulkan-wrapper-android_25.0.0-2_aarch64.deb
+dpkg -i vulkan-wrapper-android_25.0.0-2_aarch64.deb
 
 }
 
