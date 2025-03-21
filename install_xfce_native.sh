@@ -133,11 +133,11 @@ main() {
     echo -n "Please enter username for proot installation: " > /dev/tty
     read username < /dev/tty
 
-    # Change repository
-if ! termux-change-repo; then
-    echo "Failed to change repository. Exiting."
-    exit 1
-fi
+#     # Change repository
+# if ! termux-change-repo; then
+#     echo "Failed to change repository. Exiting."
+#     exit 1
+# fi
 
 # Check if storage access is already granted
 if [ -d ~/storage ]; then
