@@ -211,20 +211,20 @@ wget https://raw.githubusercontent.com/roygoraposonjr/Termux_XFCE/main/dark_wave
 mv dark_waves.png $PREFIX/share/backgrounds/xfce/
 
 # Install WhiteSur-Dark Theme
-wget https://github.com/vinceliuice/WhiteSur-gtk-theme/archive/refs/tags/2023-04-26.zip
-unzip 2023-04-26.zip
-tar -xf WhiteSur-gtk-theme-2023-04-26/release/WhiteSur-Dark-44-0.tar.xz
+wget https://github.com/vinceliuice/WhiteSur-gtk-theme/archive/refs/tags/2024-11-18.zip
+unzip 2024-11-18.zip
+tar -xf WhiteSur-gtk-theme-2024-11-18/release/WhiteSur-Dark.tar.xz
 mv WhiteSur-Dark/ $PREFIX/share/themes/
 rm -rf WhiteSur*
-rm 2023-04-26.zip
+rm 2024-11-18.zip
 
 # Install Fluent Cursor Icon Theme
-wget https://github.com/vinceliuice/Fluent-icon-theme/archive/refs/tags/2023-02-01.zip
-unzip 2023-02-01.zip
-mv Fluent-icon-theme-2023-02-01/cursors/dist $PREFIX/share/icons/ 
-mv Fluent-icon-theme-2023-02-01/cursors/dist-dark $PREFIX/share/icons/
+wget https://github.com/vinceliuice/Fluent-icon-theme/archive/refs/tags/2025-02-26.zip
+unzip 2025-02-26.zip
+mv Fluent-icon-theme-2025-02-26/cursors/dist $PREFIX/share/icons/ 
+mv Fluent-icon-theme-2025-02-26/cursors/dist-dark $PREFIX/share/icons/
 rm -rf $HOME//Fluent*
-rm 2023-02-01.zip
+rm 2025-02-26.zip
 
 # Create xsettings.xml for Termux
 cat <<'EOF' > $HOME/.config/xfce4/xfconf/xfce-perchannel-xml/xsettings.xml
@@ -913,14 +913,33 @@ echo -e "3. Uncheck the hardware acceleration option\n"
 echo -e "${YELLOW}Installation complete! Use 'start' to launch your desktop environment.${NC}\n"
 
 
+# Setup Hardware Acceleration in proot
+pd login ubuntu --shared-tmp -- env DISPLAY=:0 wget https://github.com/roygoraposonjr/Termux_XFCE/raw/main/mesa-vulkan-kgsl_25.1.0-devel-20250321-_arm64.deb
+pd login ubuntu --shared-tmp -- env DISPLAY=:0 sudo apt install -y mesa-vulkan-kgsl_25.1.0-devel-20250321-_arm64.deb
+
+apt install -y vulkan-wrapper-android
+
+# wget https://github.com/roygoraposonjr/Termux_XFCE/raw/main/vulkan-wrapper-android_25.0.0-2_aarch64.deb
+# dpkg -i vulkan-wrapper-android_25.0.0-2_aarch64.deb
+
+# Install freedreno 
+wget https://github.com/roygoraposonjr/Termux_XFCE/raw/main/freedreno-kgsl/mesa_25.0.1-2_aarch64/mesa_25.0.1-2_aarch64.deb
+wget https://github.com/roygoraposonjr/Termux_XFCE/raw/main/freedreno-kgsl/mesa_25.0.1-2_aarch64/mesa-dev_25.0.1-2_aarch64.deb
+wget https://github.com/roygoraposonjr/Termux_XFCE/raw/main/freedreno-kgsl/mesa_25.0.1-2_aarch64/mesa-vulkan-icd-freedreno_25.0.1-2_aarch64.deb
+wget https://github.com/roygoraposonjr/Termux_XFCE/raw/main/freedreno-kgsl/mesa_25.0.1-2_aarch64/mesa-vulkan-icd-swrast_25.0.1-2_aarch64.deb
+wget https://github.com/roygoraposonjr/Termux_XFCE/raw/main/freedreno-kgsl/mesa_25.0.1-2_aarch64/omesa_25.0.1-2_aarch64.deb
+dpkg -i mesa_25.0.1-2_aarch64.deb
+dpkg -i mesa-dev_25.0.1-2_aarch64.deb
+dpkg -i mesa-vulkan-icd-freedreno_25.0.1-2_aarch64.deb
+dpkg -i mesa-vulkan-icd-swrast_25.0.1-2_aarch64.deb
+dpkg -i omesa_25.0.1-2_aarch64.deb
+
+
+
 
 source $PREFIX/etc/bash.bashrc
 termux-reload-settings
 rm install_xfce_native.sh
 
-wget https://github.com/roygoraposonjr/Termux_XFCE/raw/main/vulkan-wrapper-android_25.0.0-2_aarch64.deb
-dpkg -i vulkan-wrapper-android_25.0.0-2_aarch64.deb
 
-# Setup Hardware Acceleration in proot
-pd login ubuntu --shared-tmp -- env DISPLAY=:0 wget https://github.com/roygoraposonjr/Termux_XFCE/raw/main/mesa-vulkan-kgsl_25.1.0-devel-20250321-_arm64.deb
-pd login ubuntu --shared-tmp -- env DISPLAY=:0 sudo apt install -y mesa-vulkan-kgsl_25.1.0-devel-20250321-_arm64.deb
+
