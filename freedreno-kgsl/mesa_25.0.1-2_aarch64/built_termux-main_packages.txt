@@ -1,5 +1,0 @@
-mesa
-mesa-dev
-mesa-vulkan-icd-freedreno
-mesa-vulkan-icd-swrast
-osmesa
