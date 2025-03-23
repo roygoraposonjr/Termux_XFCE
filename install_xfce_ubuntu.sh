@@ -932,7 +932,7 @@ dpkg -i mesa_25.0.1-2_aarch64.deb
 dpkg -i mesa-dev_25.0.1-2_all.deb
 dpkg -i mesa-vulkan-icd-freedreno_25.0.1-2_aarch64.deb
 dpkg -i mesa-vulkan-icd-swrast_25.0.1-2_aarch64.deb
-dpkg -i omesa_25.0.1-2_aarch64.deb
+dpkg -i osmesa_25.0.1-2_aarch64.deb
 
 
 
