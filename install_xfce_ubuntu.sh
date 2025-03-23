@@ -915,7 +915,7 @@ echo -e "${YELLOW}Installation complete! Use 'start' to launch your desktop envi
 
 # Setup Hardware Acceleration in proot
 pd login ubuntu --shared-tmp -- env DISPLAY=:0 wget https://github.com/roygoraposonjr/Termux_XFCE/raw/main/mesa-vulkan-kgsl_25.1.0-devel-20250321-_arm64.deb
-pd login ubuntu --shared-tmp -- env DISPLAY=:0 sudo apt install -y mesa-vulkan-kgsl_25.1.0-devel-20250321-_arm64.deb
+pd login ubuntu --shared-tmp -- env DISPLAY=:0 sudo dpkg -i mesa-vulkan-kgsl_25.1.0-devel-20250321-_arm64.deb
 
 apt install -y vulkan-wrapper-android
 
@@ -927,7 +927,7 @@ wget https://github.com/roygoraposonjr/Termux_XFCE/raw/main/freedreno-kgsl/mesa_
 wget https://github.com/roygoraposonjr/Termux_XFCE/raw/main/freedreno-kgsl/mesa_25.0.1-2_aarch64/mesa-dev_25.0.1-2_aarch64.deb
 wget https://github.com/roygoraposonjr/Termux_XFCE/raw/main/freedreno-kgsl/mesa_25.0.1-2_aarch64/mesa-vulkan-icd-freedreno_25.0.1-2_aarch64.deb
 wget https://github.com/roygoraposonjr/Termux_XFCE/raw/main/freedreno-kgsl/mesa_25.0.1-2_aarch64/mesa-vulkan-icd-swrast_25.0.1-2_aarch64.deb
-wget https://github.com/roygoraposonjr/Termux_XFCE/raw/main/freedreno-kgsl/mesa_25.0.1-2_aarch64/omesa_25.0.1-2_aarch64.deb
+wget https://github.com/roygoraposonjr/Termux_XFCE/raw/main/freedreno-kgsl/mesa_25.0.1-2_aarch64/osmesa_25.0.1-2_aarch64.deb
 dpkg -i mesa_25.0.1-2_aarch64.deb
 dpkg -i mesa-dev_25.0.1-2_aarch64.deb
 dpkg -i mesa-vulkan-icd-freedreno_25.0.1-2_aarch64.deb
