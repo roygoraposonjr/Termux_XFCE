@@ -917,7 +917,7 @@ echo -e "${YELLOW}Installation complete! Use 'start' to launch your desktop envi
 pd login ubuntu --shared-tmp -- env DISPLAY=:0 wget https://github.com/roygoraposonjr/Termux_XFCE/raw/main/mesa-vulkan-kgsl_25.1.0-devel-20250321-_arm64.deb
 pd login ubuntu --shared-tmp -- env DISPLAY=:0 sudo dpkg -i mesa-vulkan-kgsl_25.1.0-devel-20250321-_arm64.deb
 
-apt install -y vulkan-wrapper-android
+apt install -y vulkan-wrapper-generic
 
 # wget https://github.com/roygoraposonjr/Termux_XFCE/raw/main/vulkan-wrapper-android_25.0.0-2_aarch64.deb
 # dpkg -i vulkan-wrapper-android_25.0.0-2_aarch64.deb
