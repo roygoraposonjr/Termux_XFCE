@@ -753,7 +753,7 @@ chmod +x $PREFIX/bin/prun
 cat <<'EOF' > $PREFIX/bin/zrun
 #!/bin/bash
 varname=$(basename $PREFIX/var/lib/proot-distro/installed-rootfs/ubuntu/home/*)
-pd login ubuntu --user $varname --shared-tmp -- env DISPLAY=:0 MESA_LOADER_DRIVER_OVERRIDE=zink VK_ICD_FILENAMES=/usr/share/vulkan/icd.d/freedreno_icd.aarch64.json:/usr/share/vulkan/icd.d/freedreno_icd.armv7l.json TU_DEBUG=noconform vblank_mode=0 $@
+pd login ubuntu --user $varname --shared-tmp -- env DISPLAY=:0 MESA_LOADER_DRIVER_OVERRIDE=zink  TU_DEBUG=noconform vblank_mode=0 $@
 
 EOF
 chmod +x $PREFIX/bin/zrun
@@ -762,7 +762,7 @@ chmod +x $PREFIX/bin/zrun
 cat <<'EOF' > $PREFIX/bin/zrunhud
 #!/bin/bash
 varname=$(basename $PREFIX/var/lib/proot-distro/installed-rootfs/ubuntu/home/*)
-pd login ubuntu --user $varname --shared-tmp -- env DISPLAY=:0 MESA_LOADER_DRIVER_OVERRIDE=zink VK_ICD_FILENAMES=/usr/share/vulkan/icd.d/freedreno_icd.aarch64.json:/usr/share/vulkan/icd.d/freedreno_icd.armv7l.json TU_DEBUG=noconform GALLIUM_HUD=fps vblank_mode=0 $@
+pd login ubuntu --user $varname --shared-tmp -- env DISPLAY=:0 MESA_LOADER_DRIVER_OVERRIDE=zink  TU_DEBUG=noconform GALLIUM_HUD=fps vblank_mode=0 $@
 
 EOF
 chmod +x $PREFIX/bin/zrunhud
@@ -929,6 +929,7 @@ wget https://github.com/roygoraposonjr/Termux_XFCE/raw/main/freedreno-kgsl/mesa_
 wget https://github.com/roygoraposonjr/Termux_XFCE/raw/main/freedreno-kgsl/mesa_25.0.1-2_aarch64/mesa-vulkan-icd-swrast_25.0.1-2_aarch64.deb
 wget https://github.com/roygoraposonjr/Termux_XFCE/raw/main/freedreno-kgsl/mesa_25.0.1-2_aarch64/osmesa_25.0.1-2_aarch64.deb
 dpkg -i mesa_25.0.1-2_aarch64.deb
+dpkg install libglvnd-dev
 dpkg -i mesa-dev_25.0.1-2_all.deb
 dpkg -i mesa-vulkan-icd-freedreno_25.0.1-2_aarch64.deb
 dpkg -i mesa-vulkan-icd-swrast_25.0.1-2_aarch64.deb
