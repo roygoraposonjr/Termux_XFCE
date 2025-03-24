@@ -704,7 +704,7 @@ gpu_check
 
 # Run XFCE4 Desktop
 dbus-daemon --session --address=unix:path=$PREFIX/var/run/dbus-session &
-env DISPLAY=:0 GALLIUM_DRIVER=virpipe dbus-launch --exit-with-session xfce4-session & > /dev/null 2>&1
+env DISPLAY=:0 MESA_LOADER_DRIVER_OVERRIDE=zink TU_DEBUG=noconform dbus-launch --exit-with-session xfce4-session & > /dev/null 2>&1
 
 exit 0
 EOF
@@ -753,7 +753,7 @@ chmod +x $PREFIX/bin/prun
 cat <<'EOF' > $PREFIX/bin/zrun
 #!/bin/bash
 varname=$(basename $PREFIX/var/lib/proot-distro/installed-rootfs/ubuntu/home/*)
-pd login ubuntu --user $varname --shared-tmp -- env DISPLAY=:0 MESA_LOADER_DRIVER_OVERRIDE=zink  TU_DEBUG=noconform vblank_mode=0 $@
+pd login ubuntu --user $varname --shared-tmp -- env DISPLAY=:0 MESA_LOADER_DRIVER_OVERRIDE=zink  TU_DEBUG=noconform $@
 
 EOF
 chmod +x $PREFIX/bin/zrun
