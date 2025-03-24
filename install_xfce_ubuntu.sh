@@ -914,8 +914,8 @@ echo -e "${YELLOW}Installation complete! Use 'start' to launch your desktop envi
 
 
 # Setup Hardware Acceleration in proot
-pd login ubuntu --shared-tmp -- env DISPLAY=:0 wget https://github.com/roygoraposonjr/Termux_XFCE/raw/main/mesa-vulkan-kgsl_25.1.0-devel-20250321-_arm64.deb
-pd login ubuntu --shared-tmp -- env DISPLAY=:0 sudo dpkg -i mesa-vulkan-kgsl_25.1.0-devel-20250321-_arm64.deb
+pd login ubuntu --shared-tmp -- env DISPLAY=:0 wget https://github.com/roygoraposonjr/Termux_XFCE/raw/main/proot-driver/mesa-vulkan-kgsl_25.0.2-20250324-_arm64.deb
+pd login ubuntu --shared-tmp -- env DISPLAY=:0 sudo dpkg -i mesa-vulkan-kgsl_25.0.2-20250324-_arm64.deb
 
 apt install -y vulkan-loader-generic
 
