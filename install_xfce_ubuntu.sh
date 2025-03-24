@@ -923,17 +923,17 @@ apt install -y vulkan-loader-generic
 # dpkg -i vulkan-wrapper-android_25.0.0-2_aarch64.deb
 
 # Install freedreno 
-wget https://github.com/roygoraposonjr/Termux_XFCE/raw/main/freedreno-kgsl/mesa_25.0.1-2_aarch64/mesa_25.0.1-2_aarch64.deb
-wget https://github.com/roygoraposonjr/Termux_XFCE/raw/main/freedreno-kgsl/mesa_25.0.1-2_aarch64/mesa-dev_25.0.1-2_all.deb
-wget https://github.com/roygoraposonjr/Termux_XFCE/raw/main/freedreno-kgsl/mesa_25.0.1-2_aarch64/mesa-vulkan-icd-freedreno_25.0.1-2_aarch64.deb
-wget https://github.com/roygoraposonjr/Termux_XFCE/raw/main/freedreno-kgsl/mesa_25.0.1-2_aarch64/mesa-vulkan-icd-swrast_25.0.1-2_aarch64.deb
-wget https://github.com/roygoraposonjr/Termux_XFCE/raw/main/freedreno-kgsl/mesa_25.0.1-2_aarch64/osmesa_25.0.1-2_aarch64.deb
-dpkg -i mesa_25.0.1-2_aarch64.deb
+wget https://github.com/roygoraposonjr/Termux_XFCE/raw/main/freedreno-kgsl/mesa_25.0.2_aarch64.deb
+wget https://github.com/roygoraposonjr/Termux_XFCE/raw/main/freedreno-kgsl/mesa-dev_25.0.2_all.deb
+wget https://github.com/roygoraposonjr/Termux_XFCE/raw/main/freedreno-kgsl/mesa-vulkan-icd-freedreno_25.0.2_aarch64.deb
+wget https://github.com/roygoraposonjr/Termux_XFCE/raw/main/freedreno-kgsl/mesa-vulkan-icd-swrast_25.0.2_aarch64.deb
+wget https://github.com/roygoraposonjr/Termux_XFCE/raw/main/freedreno-kgsl/osmesa_25.0.2_aarch64.deb
+dpkg -i mesa_25.0.2_aarch64.deb
 dpkg install libglvnd-dev
-dpkg -i mesa-dev_25.0.1-2_all.deb
-dpkg -i mesa-vulkan-icd-freedreno_25.0.1-2_aarch64.deb
-dpkg -i mesa-vulkan-icd-swrast_25.0.1-2_aarch64.deb
-dpkg -i osmesa_25.0.1-2_aarch64.deb
+dpkg -i mesa-dev_25.0.2_all.deb
+dpkg -i mesa-vulkan-icd-freedreno_25.0.2_aarch64.deb
+dpkg -i mesa-vulkan-icd-swrast_25.0.2_aarch64.deb
+dpkg -i osmesa_25.0.2_aarch64.deb
 
 
 
