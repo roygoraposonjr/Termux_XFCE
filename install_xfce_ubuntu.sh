@@ -937,7 +937,7 @@ pd login ubuntu --shared-tmp -- env DISPLAY=:0 sudo dpkg -i mesa-vulkan-kgsl_25.
 # #dpkg -i mesa-vulkan-icd-swrast_25.0.2_aarch64.deb
 # dpkg -i osmesa_25.0.2_aarch64.deb
 
-pgk install mesa mesa-vulkan-icd-freedreno -y
+pkg install mesa mesa-vulkan-icd-freedreno -y
 
 
 
