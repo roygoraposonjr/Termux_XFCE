@@ -916,7 +916,7 @@ echo -e "${YELLOW}Installation complete! Use 'start' to launch your desktop envi
 # replace vblank_mode auto to off of xfwm4.xml
 sed -i 's|<property name="vblank_mode" type="string" value="auto"/>|<property name="vblank_mode" type="string" value="off"/>|' $HOME/.config/xfce4/xfconf/xfce-perchannel-xml/xfwm4.xml
 # Setup Hardware Acceleration in proot
-pd login ubuntu --shared-tmp -- env DISPLAY=:0 wget https://github.com/roygoraposonjr/Termux_XFCE/raw/main/proot-driver/mesa-vulkan-kgsl_25.0.2-20250324-_arm64.deb
+pd login ubuntu --shared-tmp -- env DISPLAY=:0 wget https://github.com/roygoraposonjr/Termux_XFCE/raw/main/proot-driver/mesa-vulkan-kgsl_25.0.3-20250413-noble_arm64.deb
 pd login ubuntu --shared-tmp -- env DISPLAY=:0 sudo dpkg -i mesa-vulkan-kgsl_25.0.2-20250324-_arm64.deb
 
 # apt install -y vulkan-loader-generic
